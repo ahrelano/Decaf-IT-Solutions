@@ -1,0 +1,65 @@
+﻿@model Decaf.ViewModel.ScheduleFormViewModel
+@{
+    ViewBag.Title = "ScheduleForm";
+}
+
+<h2>Schedule Form</h2>
+@using (Html.BeginForm("Save", "Schedules"))
+{
+    @Html.ValidationSummary();
+    <table class="table table-bordered table-hover">
+        <tr class="table-primary">
+            <th>Day</th>
+            <th>Shift From</th>
+            <th>Shift To</th>
+            <th>Rest Day</th>
+        </tr>
+        <tr>
+            <td>Sunday</td>
+            <td>@Html.TextBoxFor(m => m.Schedules.SunShiftFrom, new { @class = "form-control", @type = "time" })</td>
+            <td>@Html.TextBoxFor(m => m.Schedules.SunShiftTo, new { @class = "form-control", @type = "time" })</td>
+            <td>@Html.CheckBoxFor(m => m.Schedules.SunRestDay)</td>
+        </tr>
+        <tr>
+            <td>Monday</td>
+            <td>@Html.TextBoxFor(m => m.Schedules.MonShiftFrom, new { @class = "form-control", @type = "time" })</td>
+            <td>@Html.TextBoxFor(m => m.Schedules.MonShiftTo, new { @class = "form-control", @type = "time" })</td>
+            <td>@Html.CheckBoxFor(m => m.Schedules.MonRestDay)</td>
+        </tr>
+        <tr>
+            <td>Tuesday</td>
+            <td>@Html.TextBoxFor(m => m.Schedules.TueShiftFrom, new { @class = "form-control", @type = "time" })</td>
+            <td>@Html.TextBoxFor(m => m.Schedules.TueShiftTo, new { @class = "form-control", @type = "time" })</td>
+            <td>@Html.CheckBoxFor(m => m.Schedules.TueRestDay)</td>
+        </tr>
+        <tr>
+            <td>Wednesday</td>
+            <td>@Html.TextBoxFor(m => m.Schedules.WedShiftFrom, new { @class = "form-control", @type = "time" })</td>
+            <td>@Html.TextBoxFor(m => m.Schedules.WedShiftTo, new { @class = "form-control", @type = "time" })</td>
+            <td>@Html.CheckBoxFor(m => m.Schedules.WedRestDay)</td>
+        </tr>
+        <tr>
+            <td>Thursday</td>
+            <td>@Html.TextBoxFor(m => m.Schedules.ThuShiftFrom, new { @class = "form-control", @type = "time" })</td>
+            <td>@Html.TextBoxFor(m => m.Schedules.ThuShiftTo, new { @class = "form-control", @type = "time" })</td>
+            <td>@Html.CheckBoxFor(m => m.Schedules.ThuRestDay)</td>
+        </tr>
+        <tr>
+            <td>Friday</td>
+            <td>@Html.TextBoxFor(m => m.Schedules.FriShiftFrom, new { @class = "form-control", @type = "time" })</td>
+            <td>@Html.TextBoxFor(m => m.Schedules.FriShiftTo, new { @class = "form-control", @type = "time" })</td>
+            <td>@Html.CheckBoxFor(m => m.Schedules.FriRestDay)</td>
+        </tr>
+        <tr>
+            <td>Saturday</td>
+            <td>@Html.TextBoxFor(m => m.Schedules.SatShiftFrom, new { @class = "form-control", @type = "time" })</td>
+            <td>@Html.TextBoxFor(m => m.Schedules.SatShiftTo, new { @class = "form-control", @type = "time" })</td>
+            <td>@Html.CheckBoxFor(m => m.Schedules.SatRestDay)</td>
+        </tr>
+    </table>
+    @Html.HiddenFor(m => m.Schedules.Id)
+    @Html.HiddenFor(m => m.Schedules.UserId, new { @Value = Model.AspNetUsersId })
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+

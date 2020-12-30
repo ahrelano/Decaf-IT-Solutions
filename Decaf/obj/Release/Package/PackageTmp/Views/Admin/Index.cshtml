@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Decaf.Models.ApplicationUser>
+<h3>List of users</h3>
+      <p>
+          @Html.ActionLink("Create new user", "Register", "Account", null, new { @class = "btn btn-primary" })
+      </p>
+@if (!Model.Any())
+{
+    <p>There's no existing users.</p>
+}
+else
+{
+<table id="users" class="table table-bordered table-hover">
+    <thead>
+        <tr class="table-primary">
+            <th>Employee ID</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var users in Model)
+        {
+            <tr>
+                <th>@users.EmployeeID</th>
+                <th>@users.UserName</th>
+                <th>@users.Email</th>
+                <th>@Html.ActionLink("Details", "Details", "User", new { id = users.UserID }, null)</th>
+            </tr>
+        }
+    </tbody>
+</table>
+}
+
+@*@section scripts{
+<script>
+    $(document).ready(function () {
+        $("#users").DataTable();
+    });
+</script>    
+}*@

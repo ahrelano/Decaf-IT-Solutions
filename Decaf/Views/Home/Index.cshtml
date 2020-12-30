@@ -1,0 +1,63 @@
+﻿@model Decaf.ViewModel.TodayAttendanceViewModel
+@{
+    ViewBag.Title = "Home Page";
+}
+@if (Model.IsRestDay != true)
+{
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>Expected Time In</th>
+            <th>Expected Time Out</th>
+        </tr>
+        <tr>
+            <td>
+                @{
+                    if (Model.ShiftFrom.HasValue == true)
+                    { @DateTime.Parse(Model.ShiftFrom.ToString()).ToString("hh:mm tt") }
+                }
+            </td>
+            <td>
+                @{
+                    if (Model.ShiftTo.HasValue == true)
+                    { @DateTime.Parse(Model.ShiftTo.ToString()).ToString("hh:mm tt") }
+                }
+            </td>
+        </tr>
+    </table>
+
+    <h3>Today Attendance</h3>
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>Time In</th>
+            <th>Time Out</th>
+            @*<th>Late Minutes</th>
+            <th>Undertime Minutes</th>*@
+        </tr>
+        <tr>
+            <td>
+                @{
+                    if (Model.TimeIn.HasValue == true && Model.TimeIn.Value != TimeSpan.Parse("00:00:00"))
+                    { @DateTime.Parse(Model.TimeIn.ToString()).ToString("hh:mm tt") }
+                }
+            </td>
+            <td>
+                @{
+                    if (Model.TimeOut.HasValue == true && Model.TimeOut.Value != TimeSpan.Parse("00:00:00"))
+                    { @DateTime.Parse(Model.TimeOut.ToString()).ToString("hh:mm tt") }
+                }
+            </td>
+        </tr>
+    </table>
+                    if (ViewBag.WhichTime != "" && Model.ShiftFrom.HasValue == true && Model.ShiftTo.HasValue == true)
+                    {
+                        using (Html.BeginForm("Save", "Home"))
+                        {
+
+            <button type="submit" class="btn btn-primary">@ViewBag.WhichTime</button>
+                            }
+                        }
+                    }
+                    else
+                    {
+                        <h3>Enjoy your rest day!</h3>
+                    }

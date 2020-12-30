@@ -1,0 +1,37 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    @Html.AntiForgeryToken()
+
+<ul class="navbar-nav mr-auto">
+    <li class="nav-item">
+        @if (this.User.IsInRole("Admin"))
+        {
+            @Html.ActionLink("Users", "Index", "Admin", routeValues: null, htmlAttributes: new { @class = "nav-link" })
+        }
+    </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle navbar-brand" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">@User.Identity.GetUserName()</a>
+        <div class="dropdown-menu">
+            @Html.ActionLink("My Profile", "Index", "Profile", routeValues: null, htmlAttributes: new { title = "Profile", @class = "dropdown-item" })
+            @*@Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })*@
+            @Html.ActionLink("Manage", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "dropdown-item" })
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Sign Out</a>
+        </div>
+    </li>
+    @*<li class="nav-item">
+        <a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Sign Out</a>
+    </li>*@
+</ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}

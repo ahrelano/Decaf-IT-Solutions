@@ -1,0 +1,130 @@
+﻿@model Decaf.ViewModel.ProfileViewModel
+@{
+    ViewBag.Title = "Index";
+}
+<h3>Basic Information</h3>
+
+<table class="table table-responsive table-hover">
+    <tr>
+        <th>Name</th>
+        <td>@Model.ApplicationUser.FirstName @Model.ApplicationUser.MiddleName @Model.ApplicationUser.LastName</td>
+    </tr>
+    <tr>
+        <th>Employee ID</th>
+        <td>@Model.ApplicationUser.EmployeeID</td>
+    </tr>
+    <tr>
+        <th>Email</th>
+        <td>@Model.ApplicationUser.Email</td>
+    </tr>
+    <tr>
+        <th>Gender</th>
+        <td>@Model.ApplicationUser.Gender.Name</td>
+    </tr>
+    <tr>
+        <th>Civil Status</th>
+        <td>@Model.ApplicationUser.CivilStatus.Name</td>
+    </tr>
+    <tr>
+        <th>Date of Birth</th>
+        <td>@Model.ApplicationUser.BirthDate.ToString("D")</td>
+    </tr>
+</table>
+
+
+<h3>Work Schedule</h3>
+
+<table class="table table-bordered table-hover">
+    <tr class="table-primary">
+        <th>Day</th>
+        <th>Shift From</th>
+        <th>Shift To</th>
+        <th>Rest Day</th>
+    </tr>
+    <tr>
+        <td>Sunday</td>
+        <td>
+            @{ if (Model.Schedules.SunShiftFrom.HasValue == true)
+                { @DateTime.Parse(Model.Schedules.SunShiftFrom.ToString()).ToString("hh:mm tt") } }
+        </td>
+        <td>
+            @{ if (Model.Schedules.SunShiftTo.HasValue == true)
+                { @DateTime.Parse(Model.Schedules.SunShiftTo.ToString()).ToString("hh:mm tt") } }
+        </td>
+        <td>@Html.CheckBoxFor(m => m.Schedules.SunRestDay, new { disabled = "disabled" })</td>
+    </tr>
+    <tr>
+        <td>Monday</td>
+        <td>
+            @{ if (Model.Schedules.MonShiftFrom.HasValue == true)
+                { @DateTime.Parse(Model.Schedules.MonShiftFrom.ToString()).ToString("hh:mm tt") } }
+        </td>
+        <td>
+            @{ if (Model.Schedules.MonShiftTo.HasValue == true)
+                { @DateTime.Parse(Model.Schedules.MonShiftTo.ToString()).ToString("hh:mm tt") } }
+        </td>
+        <td>@Html.CheckBoxFor(m => m.Schedules.MonRestDay, new { disabled = "disabled" })</td>
+    </tr>
+    <tr>
+        <td>Tuesday</td>
+        <td>
+            @{ if (Model.Schedules.TueShiftFrom.HasValue == true)
+                { @DateTime.Parse(Model.Schedules.TueShiftFrom.ToString()).ToString("hh:mm tt") } }
+        </td>
+        <td>
+            @{ if (Model.Schedules.TueShiftTo.HasValue == true)
+                { @DateTime.Parse(Model.Schedules.TueShiftTo.ToString()).ToString("hh:mm tt") } }
+        </td>
+        <td>@Html.CheckBoxFor(m => m.Schedules.TueRestDay, new { disabled = "disabled" })</td>
+    </tr>
+    <tr>
+        <td>Wednesday</td>
+        <td>
+            @{ if (Model.Schedules.WedShiftFrom.HasValue == true)
+                { @DateTime.Parse(Model.Schedules.WedShiftFrom.ToString()).ToString("hh:mm tt") } }
+        </td>
+        <td>
+            @{ if (Model.Schedules.WedShiftTo.HasValue == true)
+                { @DateTime.Parse(Model.Schedules.WedShiftTo.ToString()).ToString("hh:mm tt") } }
+        </td>
+        <td>@Html.CheckBoxFor(m => m.Schedules.WedRestDay, new { disabled = "disabled" })</td>
+    </tr>
+    <tr>
+        <td>Thursday</td>
+        <td>
+            @{ if (Model.Schedules.ThuShiftFrom.HasValue == true)
+                { @DateTime.Parse(Model.Schedules.ThuShiftFrom.ToString()).ToString("hh:mm tt") } }
+        </td>
+        <td>
+            @{ if (Model.Schedules.ThuShiftTo.HasValue == true)
+                { @DateTime.Parse(Model.Schedules.ThuShiftTo.ToString()).ToString("hh:mm tt") } }
+        </td>
+        <td>@Html.CheckBoxFor(m => m.Schedules.ThuRestDay, new { disabled = "disabled" })</td>
+    </tr>
+    <tr>
+        <td>Friday</td>
+        <td>
+            @{ if (Model.Schedules.FriShiftFrom.HasValue == true)
+                { @DateTime.Parse(Model.Schedules.FriShiftFrom.ToString()).ToString("hh:mm tt") } }
+        </td>
+        <td>
+            @{ if (Model.Schedules.FriShiftTo.HasValue == true)
+                { @DateTime.Parse(Model.Schedules.FriShiftTo.ToString()).ToString("hh:mm tt") } }
+        </td>
+        <td>@Html.CheckBoxFor(m => m.Schedules.FriRestDay, new { disabled = "disabled" })</td>
+    </tr>
+    <tr>
+        <td>Saturday</td>
+        <td>
+            @{ if (Model.Schedules.SatShiftFrom.HasValue == true)
+                { @DateTime.Parse(Model.Schedules.SatShiftFrom.ToString()).ToString("hh:mm tt") } }
+        </td>
+        <td>
+            @{ if (Model.Schedules.SatShiftTo.HasValue == true)
+                { @DateTime.Parse(Model.Schedules.SatShiftTo.ToString()).ToString("hh:mm tt") } }
+        </td>
+        <td>@Html.CheckBoxFor(m => m.Schedules.SatRestDay, new { disabled = "disabled" })</td>
+    </tr>
+</table>
+
+
