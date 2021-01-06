@@ -10,11 +10,12 @@ namespace Decaf
         {
             bundles.Add(new ScriptBundle("~/bundles/lib").Include(
                         "~/Scripts/jquery-{version}.js",
-                        "~/Scripts/bootstrap.js",
+                        //"~/Scripts/bootstrap.js",  //this make the navbar collapse not working
                         "~/Scripts/jquery-cerulean.min.js",
                         "~/Scripts/bootstrap-cerulean.bundle.min.js",
                         "~/Scripts/DataTables/jquery.dataTables.js",
-                        "~/Scripts/DataTables/dataTables.bootstrap.js"));
+                        "~/Scripts/DataTables/dataTables.bootstrap.js"
+                        ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -27,6 +28,7 @@ namespace Decaf
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-Cerulean.css",
                       "~/Content/bootstrap.min-cerulean.css",
+                      "~/Content/Montserrat.css",
                       "~/Content/datatables/css/datatables.bootstrap.css",
                        "~/Content/site.css"));
         }
