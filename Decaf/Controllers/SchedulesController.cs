@@ -29,13 +29,15 @@ namespace Decaf.Controllers
             if (selectUser == null)
                 return HttpNotFound();
 
+            var EmployeeName = selectUser.FirstName + " " + selectUser.LastName;
             var userSched = _context.Schedules.SingleOrDefault(u => u.UserId == id);
             if (userSched == null)
             {
                 var viewModel = new ScheduleFormViewModel
                 {
                     Schedules = new Schedules(),
-                    AspNetUsersId = id
+                    AspNetUsersId = id,
+                    Name = EmployeeName
                 };
 
                 return View("ScheduleForm", viewModel);
@@ -45,7 +47,8 @@ namespace Decaf.Controllers
                 var viewModel = new ScheduleFormViewModel
                 {
                     Schedules = userSched,
-                    AspNetUsersId = id
+                    AspNetUsersId = id,
+                    Name = EmployeeName
                 };
                 return View("ScheduleForm", viewModel);
             }

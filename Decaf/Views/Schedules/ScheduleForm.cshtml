@@ -3,7 +3,7 @@
     ViewBag.Title = "ScheduleForm";
 }
 
-<h2>Schedule Form</h2>
+<h2>Schedule Form (@Model.Name)</h2>
 @using (Html.BeginForm("Save", "Schedules"))
 {
     @Html.ValidationSummary();

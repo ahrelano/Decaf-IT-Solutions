@@ -10,6 +10,7 @@ namespace Decaf.ViewModel
     public class ScheduleFormViewModel
     {
         public int AspNetUsersId { get; set; }
+        public string Name { get; set; }
         public Schedules Schedules { get; set; }
     }
 }
